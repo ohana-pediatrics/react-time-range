@@ -1,14 +1,14 @@
-#react-time-range {
+.react-time-range {
   padding: 5px;
 }
 
-#react-time-range .component {
+.react-time-range .component {
   display: inline;
   overflow: auto;
   padding: 5px;
 }
 
-#react-time-range select {
+.react-time-range select {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -19,11 +19,11 @@
   cursor: pointer;
 }
 
-#react-time-range .component .label {
+.react-time-range .component .label {
   padding-right: 10px;
 }
 
-#react-time-range .error {
+.react-time-range .error {
   color: red;
   padding: 5px;
 }

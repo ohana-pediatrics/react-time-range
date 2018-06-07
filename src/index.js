@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import {generateTimeObjects, manipulateTimeObject} from "./timeModel";
@@ -17,7 +17,7 @@ const HANDLERS = {
   }
 };
 
-class TimeRange extends React.Component {
+class TimeRange extends Component {
   static propTypes = {
     use24Hours: PropTypes.bool,
     startLabel: PropTypes.string,

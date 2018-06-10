@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/peterjoseph/react-time-range.git"
+    "url": "git+https://github.com/ohanapediatrics/react-time-range.git"
   },
   "keywords": [
     "react",
@@ -33,37 +33,38 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/peterjoseph/react-time-range/issues"
+    "url": "https://github.com/ohanapediatrics/react-time-range/issues"
   },
-  "homepage": "https://github.com/peterjoseph/react-time-range#readme",
+  "homepage": "https://github.com/ohanapediatrics/react-time-range#readme",
   "dependencies": {
-    "classnames": "^2.2.5",
-    "css-loader": "^0.28.9",
-    "file-loader": "^1.1.6",
+    "classnames": "^2.2.6",
     "moment": "^2.22.2",
-    "prop-types": "^15.6.0",
+    "prop-types": "^15.6.1",
     "react": "^16.4.0",
-    "react-dom": "^16.4.0",
-    "style-loader": "^0.20.1",
-    "webpack": "^3.11.0"
+    "react-dom": "^16.4.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
+    "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
-    "babel-loader": "^7.1.2",
+    "babel-loader": "^7.1.4",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-preset-env": "^1.6.1",
-    "eslint": "^4.17.0",
-    "eslint-config-standard": "^11.0.0-beta.0",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
     "eslint-plugin-class-property": "^1.1.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-node": "^6.0.0",
-    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-react": "^7.9.1",
-    "eslint-plugin-standard": "^3.0.1",
-    "prettier-eslint": "^8.8.1"
+    "eslint-plugin-standard": "^3.1.0",
+    "file-loader": "^1.1.11",
+    "prettier-eslint": "^8.8.1",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.12.0",
+    "webpack-cli": "^3.0.3"
   }
 }

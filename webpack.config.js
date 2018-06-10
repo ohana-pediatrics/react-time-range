@@ -1,5 +1,5 @@
 var path = require("path");
-const babelConfig = require('./.babelrc.json');
+const babelConfig = require("./.babelrc.json");
 module.exports = {
   entry: "./src/index.js",
   output: {
@@ -8,13 +8,13 @@ module.exports = {
     libraryTarget: "commonjs2"
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: [".js", ".jsx"],
   },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         exclude: /node_modules/,
         query: babelConfig,
       },

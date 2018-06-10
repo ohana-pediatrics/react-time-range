@@ -1,6 +1,6 @@
 {
   "name": "@ohanapediatrics/react-time-range",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A flexible time range selector for React",
   "main": "build/index.js",
   "scripts": {

@@ -1,22 +1,28 @@
 var path = require("path");
-const babelConfig = require("./.babelrc.json");
 module.exports = {
-  entry: "./src/index.js",
+  entry: "./src/index.ts",
   output: {
-    path: path.resolve(__dirname, "build"),
+    path: path.resolve(__dirname, "dist"),
+    publicPath: '/',
     filename: "index.js",
-    libraryTarget: "commonjs2"
+    libraryTarget: "commonjs2",
+    library: 'TimeRange',
   },
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: [".ts", ".tsx", ".js", ".json"]
   },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        loader: "babel-loader",
-        exclude: /node_modules/,
-        query: babelConfig,
+        test: /\.tsx?$/,
+        use: {
+          loader: 'awesome-typescript-loader',
+        },
+      },
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        loader: 'source-map-loader',
       },
       {
         test: /.css$/,

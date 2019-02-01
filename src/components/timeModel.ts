@@ -1,10 +1,28 @@
-import moment from "moment";
+import moment, {Moment} from "moment";
 
-function validMoments(startMoment, endMoment) {
+export type Increment = {
+  value: string,
+  HH: string,
+  MM: string,
+  hh: string,
+  mm: string,
+  active: boolean,
+  period: "AM" | "PM"
+}
+
+export type TimeModel = {
+  startTimeIncrement: Increment[],
+  endTimeIncrement: Increment[],
+  startTimeValue: string,
+  endTimeValue: string,
+  error: string
+}
+
+function validMoments(startMoment: Moment, endMoment: Moment) {
   return startMoment.isValid() && endMoment.isValid();
 }
 
-function validRange(startMoment, endMoment, sameIsValid) {
+function validRange(startMoment: Moment, endMoment: Moment, sameIsValid: boolean) {
   if (startMoment.isSame(endMoment)) {
     if (!sameIsValid) {
       return "equal";
@@ -15,13 +33,13 @@ function validRange(startMoment, endMoment, sameIsValid) {
   return startMoment.isBefore(endMoment) ? "lesser" : "greater";
 }
 
-function generateTimeIncrement(minIncrementProp) {
+function generateTimeIncrement(minIncrementProp: number): Increment[] {
   // Create an array of all possible times that can be selected
   const minuteIncrement = 60 / minIncrementProp;
   let timeArray = [];
   for (let i = 0; i < 24; i++) {
     for (let j = 0; j < minuteIncrement; j++) {
-      const time = {
+      const time: Increment = {
         value: ("0" + i).slice(-2) + ("0" + j * minIncrementProp).slice(-2),
         HH: ("0" + i).slice(-2),
         MM: ("0" + j * minIncrementProp).slice(-2),
@@ -39,7 +57,7 @@ function generateTimeIncrement(minIncrementProp) {
   return timeArray;
 }
 
-function calculateRoundedTimeValue(moment, minIncrementProp) {
+function calculateRoundedTimeValue(moment: Moment, minIncrementProp : number) {
   // If we receive a moment value, find nearest time increment
   const roundedTime =
     Math.round((moment.hour() * 60 + moment.minutes()) / minIncrementProp) *
@@ -50,7 +68,16 @@ function calculateRoundedTimeValue(moment, minIncrementProp) {
   );
 }
 
-export function generateTimeObjects(props) {
+type TimeModelOptions = {
+  startMoment: string,
+  endMoment: string,
+  minuteIncrement: number,
+  sameIsValid: boolean,
+  equalTimeError: string,
+  endTimeError: string,
+}
+
+export const generateTimeObjects = (props: TimeModelOptions): TimeModel => {
   let startTimeMoment,
     endTimeMoment,
     startTimeIncrement,
@@ -115,14 +142,14 @@ export function generateTimeObjects(props) {
     endTimeIncrement,
     startTimeValue,
     endTimeValue,
-    error
+    error: error || ''
   };
-}
+};
 
-export function manipulateTimeObject(momentObject, newTimeValue) {
+export const manipulateTimeObject = (momentObject: string, newTimeValue: string) => {
   let time = moment(momentObject);
   time.set("hour", parseInt(newTimeValue.substring(0, 2)));
   time.set("minutes", parseInt(newTimeValue.substring(2, 4)));
   time.set("seconds", 0);
   return time.toISOString();
-}
+};

@@ -1,7 +1,18 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, {ChangeEventHandler, FunctionComponent, MouseEventHandler, ReactNode} from "react";
+import {Increment} from "./timeModel";
 
-const TimeComponent = ({label, calendar, timeValue, timeIncrement, use24Hours, onChange, onClick}) => {
+type Props = {
+  label: string,
+  calendar: ReactNode,
+  timeValue: string,
+  timeIncrement: Increment[],
+  use24Hours: boolean,
+  onChange: ChangeEventHandler,
+  onClick: MouseEventHandler,
+};
+
+
+const TimeComponent: FunctionComponent<Props> = ({label, calendar, timeValue, timeIncrement, use24Hours, onChange, onClick}) => {
   return (<div className="component start-component">
     {label && <span className="label">{label}</span>}
     {calendar && <span className="component">{calendar}</span>}
@@ -11,7 +22,7 @@ const TimeComponent = ({label, calendar, timeValue, timeIncrement, use24Hours, o
       onClick={onClick}
     >
       {timeIncrement &&
-        timeIncrement.map((resp, index) => (
+        timeIncrement.map((resp, index: number) => (
           <option key={index} value={resp.value} disabled={!resp.active}>
             {use24Hours
               ? `${resp.HH}:${resp.MM}`
@@ -20,16 +31,6 @@ const TimeComponent = ({label, calendar, timeValue, timeIncrement, use24Hours, o
         ))}
     </select>
   </div>);
-};
-
-TimeComponent.propTypes = {
-  label: PropTypes.string,
-  calendar: PropTypes.shape({}),
-  timeValue: PropTypes.string,
-  timeIncrement: PropTypes.arrayOf(PropTypes.shape({})),
-  use24Hours: PropTypes.bool,
-  onChange: PropTypes.func,
-  onClick: PropTypes.func,
 };
 
 export default TimeComponent;
